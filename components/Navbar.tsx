@@ -19,7 +19,7 @@ export const Navbar = ({ loggedIn }: NavbarProps) => {
 
     const logout = () => {
         localStorage.removeItem('logged');
-        router.push('/login');
+        router.push('/login'); 
     };
 
     return (
