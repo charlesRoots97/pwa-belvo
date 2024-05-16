@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../src/app/page.module.css";
 import Link from "next/link";
 import { useRouter } from 'next/router';
@@ -10,11 +10,8 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
-
-    const [mostrarBarra, setMostrarBarra] = useState(false);
-    const router = useRouter();
-
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -22,11 +19,9 @@ export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
 
     const logout = () => {
         localStorage.removeItem('logged');
-        setLoggedIn(false)
+        setLoggedIn(false);
         router.push('/login');
-    }
-
-    
+    };
 
     return (
         <header className={styles.header_area}>
@@ -51,24 +46,6 @@ export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
                         <button className={styles.nav_toggler} onClick={toggleSidebar}>
                             <span></span>
                         </button>
-
-                        {/* <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-                            <ul>
-
-                            <li><Link href="/">Home</Link></li>
-                            {!loggedIn ? (
-                                <>
-                                    <li><Link href="/login">Login</Link></li>
-                                    <li><Link href="/register">Register</Link></li>
-                                </>
-                            ) : (
-                                <>
-                                    <li><Link href="/login">Cuentas</Link></li>
-                                    <li><Link href="/register">Salir</Link></li>
-                                </>
-                            )}
-                            </ul>
-                        </div> */}
                     </nav>
                 </div>
             </div>
