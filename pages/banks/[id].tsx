@@ -12,7 +12,6 @@ interface Bank {
   }
 
 const BankPage = () => {
-    const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false);
     const [bank, setBank] = useState<Bank | null>(null);
     const [existsBank, setExistsBank] = useState(false);
@@ -21,10 +20,11 @@ const BankPage = () => {
         const logged = localStorage.getItem("logged");
         const bank_id = localStorage.getItem("bank_id");
         setLoggedIn(logged === "1");
-    if(logged === "1"){
-        // handleClick(bank_id);
-        
-      }else{
+        if(logged === "1"){
+            // handleClick(bank_id);
+            
+        }else{
+        const router = useRouter();
         router.push('/login');
       }
     }, []);
