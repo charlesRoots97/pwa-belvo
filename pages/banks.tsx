@@ -8,6 +8,11 @@ import { Navbar } from '../components';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 
+interface Bank {
+  id: string | number;
+  name: string;
+}
+
 export default function Home() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [banks, setBanks] = useState([]);
