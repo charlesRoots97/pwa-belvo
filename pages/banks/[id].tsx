@@ -70,6 +70,7 @@ const BankPage = () => {
             </>
         ) : (
             <>
+            <p>Loading...</p>
             </>
         )}
         
