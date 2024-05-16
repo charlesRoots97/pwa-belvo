@@ -22,7 +22,7 @@ export default function Home() {
 
     const handleClick = async (data: LoginData) => {
         try {
-            const response = await fetch('http://localhost:5000/insert-user', {
+            const response = await fetch('https://apps-ws.spot1.mx/api/register-next', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
