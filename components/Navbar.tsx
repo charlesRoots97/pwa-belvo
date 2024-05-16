@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 
 interface NavbarProps {
     loggedIn: boolean;
-    setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+    // setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
+export const Navbar = ({ loggedIn }: NavbarProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const router = useRouter();
 
@@ -19,7 +19,6 @@ export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
 
     const logout = () => {
         localStorage.removeItem('logged');
-        setLoggedIn(false);
         router.push('/login');
     };
 

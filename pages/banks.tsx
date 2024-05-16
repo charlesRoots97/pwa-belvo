@@ -59,7 +59,7 @@ const BanksPage = () => {
         <meta name="author" content="Charles Ruíz" />
         <meta name="description" content="Prueba técnica Next JS" />
       </Head>
-      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Navbar loggedIn={loggedIn} />
       <main className={styles.main}>
         <div className={stylesBanks.container_banks}>
           <p>Bancos</p>
