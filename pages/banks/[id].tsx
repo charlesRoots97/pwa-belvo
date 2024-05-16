@@ -62,7 +62,7 @@ const BankPage = () => {
     <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
     <main className={styles.main}>
       <div className={stylesBanks.container_banks}>
-        {existsBank ? (
+        {existsBank && bank ? (
             <>
             <p>Bank: {bank.display_name}</p>
             <p>Status: {bank.status}</p>
