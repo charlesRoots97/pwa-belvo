@@ -11,10 +11,10 @@ interface Bank {
     country_code: string;
   }
 
-const Bank = () => {
+const BankPage = () => {
     const router = useRouter();
     const [loggedIn, setLoggedIn] = useState(false);
-    const [bank, setBank] = useState({});
+    const [bank, setBank] = useState<Bank | null>(null);
     const [existsBank, setExistsBank] = useState(false);
     
     useEffect(() => {
@@ -79,4 +79,4 @@ const Bank = () => {
   );
 };
 
-export default Bank;
+export default BankPage;
