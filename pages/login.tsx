@@ -5,7 +5,7 @@ import Head from "next/head"
 import styles from "../src/app/page.module.css";
 import stylesLogin from "../src/app/login.module.css";
 import { Navbar } from '../components'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface LoginData {
   email: string;

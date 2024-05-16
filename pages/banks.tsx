@@ -4,7 +4,7 @@ import Head from "next/head";
 import styles from "../src/app/page.module.css";
 import stylesBanks from "../src/app/banks.module.css";
 import { Navbar } from '../components/Navbar';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface Bank {
   id: string;

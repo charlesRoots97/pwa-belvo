@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "../src/app/page.module.css";
 import Link from "next/link";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface NavbarProps {
     loggedIn: boolean;
