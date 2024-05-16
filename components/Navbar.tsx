@@ -1,6 +1,8 @@
-import React from "react";
+'use client';
+import React, { useState, useEffect } from "react";
 import styles from "../src/app/page.module.css";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 interface NavbarProps {
     loggedIn: boolean;
@@ -8,6 +10,24 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
+
+    const [mostrarBarra, setMostrarBarra] = useState(false);
+    const router = useRouter();
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const logout = () => {
+        localStorage.removeItem('logged');
+        setLoggedIn(false)
+        router.push('/login');
+    }
+
+    
+
     return (
         <header className={styles.header_area}>
             <div className={styles.navbar_area}>
@@ -24,13 +44,31 @@ export const Navbar = ({ loggedIn, setLoggedIn }: NavbarProps) => {
                             ) : (
                                 <>
                                     <li><Link href="/login">Cuentas</Link></li>
-                                    <li><Link href="/register">Salir</Link></li>
+                                    <li><a href="#" onClick={logout}>Salir</a></li>
                                 </>
                             )}
                         </ul>
-                        <button className={styles.nav_toggler}>
+                        <button className={styles.nav_toggler} onClick={toggleSidebar}>
                             <span></span>
                         </button>
+
+                        {/* <div className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
+                            <ul>
+
+                            <li><Link href="/">Home</Link></li>
+                            {!loggedIn ? (
+                                <>
+                                    <li><Link href="/login">Login</Link></li>
+                                    <li><Link href="/register">Register</Link></li>
+                                </>
+                            ) : (
+                                <>
+                                    <li><Link href="/login">Cuentas</Link></li>
+                                    <li><Link href="/register">Salir</Link></li>
+                                </>
+                            )}
+                            </ul>
+                        </div> */}
                     </nav>
                 </div>
             </div>

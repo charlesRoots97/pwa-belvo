@@ -135,3 +135,16 @@
     background: linear-sradient (270deg, xgba(2, 29, 78, 0.681) 0%,rgba(31, 215, 232, 0.873) 60%);
     color: rgb(4, 4 36)
 }
+
+.scroll_container {
+    width: 90%;
+    overflow-x: auto; 
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.horizontal_scroll {
+    width: 90%;
+    display: flex;          /* Hace que los elementos hijos se coloquen en una fila */
+    white-space: nowrap; 
+}

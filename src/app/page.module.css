@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem;
+  padding: 1rem;
   min-height: 100vh;
   background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.5)),
   url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop8w=2089&q=80);
@@ -383,3 +383,49 @@ a.site_logo {
 }
 
 
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  color: white;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 100 !important;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  padding: 20px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(255,255,255,.1);
+}
+
+.toggleButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.toggleButton:hover {
+  background-color: #575757;
+}
+
+.open {
+  left: 0;
+}

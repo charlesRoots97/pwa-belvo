@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { FC } from 'react';
-import Image from "next/image";
-import Head from "next/head";
-import styles from "../src/app/page.module.css";
-import stylesBanks from "../src/app/banks.module.css";
-import { Navbar } from '../components';
 import { useRouter } from 'next/router';
-import Link from "next/link";
+import React, { useState, useEffect } from 'react';
+import Head from "next/head";
+import styles from "../../src/app/page.module.css";
+import stylesBanks from "../../src/app/banks.module.css";
+import { Navbar } from '../../components';
 
-
-export default function Home() {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [banks, setBanks] = useState([]);
+const Bank = () => {
     const router = useRouter();
-
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [bank, setBank] = useState({});
+    const [existsBank, setExistsBank] = useState(false);
+    
     useEffect(() => {
-      const logged = localStorage.getItem("logged");
-      setLoggedIn(logged === "1");
-      if(logged === "1"){
-        handleClick();
+        const logged = localStorage.getItem("logged");
+        const bank_id = localStorage.getItem("bank_id");
+        setLoggedIn(logged === "1");
+    if(logged === "1"){
+        handleClick(bank_id);
+        
       }else{
         router.push('/login');
       }
     }, []);
   
 
-    const handleClick = async () => {
+    const handleClick = async (id_bank) => {
         try {
-            const response = await fetch('https://sandbox.belvo.com/api/institutions/', {
+            const response = await fetch(`https://sandbox.belvo.com/api/institutions/${id_bank}/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,8 +35,9 @@ export default function Home() {
             });
             if (response.ok) {
                 const resp = await response.json();
-                setBanks(resp.results);
                 console.log(resp);
+                setBank(resp)
+                setExistsBank(true)
                 // router.push('/login');
             } else {
                 console.error('Error al realizar la petición');
@@ -45,11 +45,6 @@ export default function Home() {
         } catch (error) {
             console.error('Error al realizar la petición:', error);
         }
-    }
-
-    const redirectToBank = (id_bank) => {
-      localStorage.setItem('bank_id', id_bank);
-      router.push(`banks/${id_bank}/`);
     }
   return (
     <>
@@ -61,18 +56,21 @@ export default function Home() {
     <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
     <main className={styles.main}>
       <div className={stylesBanks.container_banks}>
-        <p>Bancos</p>
+        {existsBank ? (
+            <>
+            <p>Bank: {bank.display_name}</p>
+            <p>Status: {bank.status}</p>
+            <p>Country Code: {bank.country_code}</p>
+            </>
+        ) : (
+            <>
+            </>
+        )}
         
-        <div className={stylesBanks.scroll_container}>
-        <div className={stylesBanks.horizontal_scroll}>
-        {banks.map((item) => (
-          <button key={item.id} className={stylesBanks.btn} type="button" onClick={() => redirectToBank(item.id)}>{item.name}</button>
-          ))}
-          </div>
-          </div>
       </div>
-          
     </main>
     </>
   );
-}
+};
+
+export default Bank;
