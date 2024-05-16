@@ -15,7 +15,7 @@ interface Bank {
 
 export default function Home() {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [banks, setBanks] = useState([]);
+    const [banks, setBanks] = useState<Bank[]>([]);
     const router = useRouter();
 
     useEffect(() => {
