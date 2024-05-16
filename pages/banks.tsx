@@ -8,6 +8,9 @@ import { Navbar } from '../components';
 import { useRouter } from 'next/router';
 import Link from "next/link";
 
+interface NavbarProps {
+  id_bank: BigInteger;
+}
 
 export default function Home() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -47,7 +50,7 @@ export default function Home() {
         }
     }
 
-    const redirectToBank = (id_bank) => {
+    const redirectToBank = (id_bank: string | number) => {
       localStorage.setItem('bank_id', id_bank);
       router.push(`banks/${id_bank}/`);
     }
