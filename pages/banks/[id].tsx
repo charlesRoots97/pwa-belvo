@@ -20,7 +20,7 @@ const BankPage = () => {
         const logged = localStorage.getItem("logged");
         const bank_id = localStorage.getItem("bank_id");
         setLoggedIn(logged === "1");
-        if(logged === "1"){
+        if(logged === "1" && bank_id){
             handleClick(bank_id);
             
         }else{
@@ -30,7 +30,7 @@ const BankPage = () => {
     }, []);
   
 
-    const handleClick = async (id_bank: string | number) => {
+    const handleClick = async (id_bank: string) => {
         try {
             const response = await fetch(`https://sandbox.belvo.com/api/institutions/${id_bank}/`, {
                 method: 'GET',
