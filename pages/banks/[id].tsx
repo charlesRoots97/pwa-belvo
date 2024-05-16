@@ -24,7 +24,7 @@ const Bank = () => {
     }, []);
   
 
-    const handleClick = async (id_bank) => {
+    const handleClick = async (id_bank: string | number) => {
         try {
             const response = await fetch(`https://sandbox.belvo.com/api/institutions/${id_bank}/`, {
                 method: 'GET',
