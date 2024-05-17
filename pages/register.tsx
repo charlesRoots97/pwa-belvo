@@ -59,7 +59,7 @@ export default function Home() {
         </div>
         <div className={stylesLogin.container_1}>
           <div className={stylesLogin.group}>
-            <input className={stylesLogin.main_input} name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" className={stylesLogin.main_input} name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <span className={stylesLogin.highlight_span}></span>
             <label className={stylesLogin.lebal_email}>Password</label>
           </div>
