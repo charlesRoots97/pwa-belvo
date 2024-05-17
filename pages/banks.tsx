@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 import Head from "next/head";
 import styles from "../src/app/page.module.css";
 import stylesBanks from "../src/app/banks.module.css";
+import stylesCard from "../src/app/cards.module.css";
 import { Navbar } from '../components/Navbar';
 import { useRouter } from 'next/navigation';
 
 interface Bank {
   id: string;
   name: string;
+  display_name: string;
+  icon_logo: string;
+  primary_color: string;
 }
 
 const BanksPage = () => {
@@ -47,8 +51,9 @@ const BanksPage = () => {
     }
   };
 
-  const redirectToBank = (id_bank: string) => {
+  const redirectToBank = (id_bank: string, name: string) => {
     localStorage.setItem('bank_id', id_bank);
+    localStorage.setItem('bank_name', name);
     router.push(`banks/${id_bank}/`);
   };
 
@@ -66,7 +71,22 @@ const BanksPage = () => {
           <div className={stylesBanks.scroll_container}>
             <div className={stylesBanks.horizontal_scroll}>
               {banks.map((item) => (
-                <button key={item.id} className={stylesBanks.btn} type="button" onClick={() => redirectToBank(item.id)}>{item.name}</button>
+                <div key={item.id} className={stylesCard.card}>
+                  <div className={stylesCard.card_top}>
+                    <div className={stylesCard.card_top_info}>
+                      <div className={stylesCard.card_top_info_header}>
+                        <h1>{item.display_name}</h1>
+                      </div>
+                    </div>
+                    <div className={stylesCard.card_top_price}>
+                      <h1 className={stylesCard.card_top_price_header}><img src={item.icon_logo}  /></h1>
+                    </div>
+                  </div>
+                  <div className={stylesCard.card_bottom}>
+                    <span className={stylesCard.card_bottom_description}>{item.name}</span>
+                    <button className={stylesCard.card_bottom_btn}  style={{ backgroundColor: item.primary_color }} type="button" onClick={() => redirectToBank(item.id, item.name)} >Ver</button>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

@@ -139,7 +139,7 @@
 .scroll_container {
     width: 90%;
     overflow-x: auto; 
-    border: 1px solid white;
+    border: none;
     border-radius: 10px;
 }
 
