@@ -37,7 +37,7 @@ export const Navbar = ({ loggedIn }: NavbarProps) => {
                                 </>
                             ) : (
                                 <>
-                                    <li><Link href="/login">Cuentas</Link></li>
+                                    <li><Link href="/banks">Bancos</Link></li>
                                     <li><a href="#" onClick={logout}>Salir</a></li>
                                 </>
                             )}
